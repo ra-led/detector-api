@@ -10,3 +10,13 @@ services:
       - 5011:5011
     volumes:
       - ./model_dir/:/model_dir/
+
+  nginx:
+    image: nginx
+    container_name: nginx
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      
