@@ -1,5 +1,19 @@
 # detector-api
 ## Start server
+1. Clone repo
+```
+git clone https://github.com/ra-led/detector-api.git && cd detector-api
+```
+2. Create `model_dir` in root of repo and
+```
+mkdir model_dir
+```
+3. Save there `yolov5{size}.pt` (ex, `/model_dir/yolov5s.pt`)
+```
+wget https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5s.pt
+mv ./yolov5s.pt ./model_dir/yolov5s.pt
+```
+3. Run doker compos
 ```
 docker compose up --build -d
 ```
@@ -8,19 +22,19 @@ docker compose up --build -d
 
 ### GET 127.0.0.1/health
 Response JSON:
-```json
+```
 {"result": 1}
 ```
 
 ### POST 127.0.0.1/
 Request JSON:
-```json
+```
 {
     'image': 'img_in_base64',
 }
 ```
 Response JSON:
-```json
+```
 {
     'ok': 1 if image was processed succesfully else 0,
     'total': count of detected objects,
