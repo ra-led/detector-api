@@ -1,0 +1,12 @@
+version: '3'
+services:
+  model-server:
+    build: .
+    command: gunicorn -w 1 -b 0.0.0.0:5011 "app:create_app()"
+    environment:
+      - DEVICE=cpu
+      - MODEL_NAME=yolov5s.pt
+    ports:
+      - 5011:5011
+    volumes:
+      - ./model_dir/:/model_dir/
