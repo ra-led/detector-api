@@ -11,7 +11,7 @@ ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 class Model:
     def __init__(self, model_dir):
-        self.device = os.getenv('DEVICE')
+        self.device = os.getenv('DEVICE', 'cpu')
         model_name = os.getenv('MODEL_NAME', 'yolov5s.pt')
         self.model = torch.hub.load(
             './yolov5',
@@ -54,7 +54,7 @@ class Model:
                     'y': int(y * im_h),
                     'w': int(w * im_w),
                     'h': int(h * im_h),
-                    'p': p
+                    'p': float(p)
                 }
                 for on, (x, y, w, h), p in zip(
                     names,
