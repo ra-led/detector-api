@@ -11,3 +11,7 @@ def create_app():
     api.add_resource(HealthCheck, '/health')
     api.add_resource(ML, '/')
     return app
+
+
+# app = create_app()
+# app.run(host='0.0.0.0',port=5555)
